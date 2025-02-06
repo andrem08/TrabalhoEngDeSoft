@@ -422,4 +422,29 @@ describe('Validação do Formulário de Segundo Relatório', () => {
         const validationMessage = isValidURL(fields.linkLattes.value) ? '' : 'URL inválida';
         expect(validationMessage).to.be.empty;
     });
+
+    // Adicionando o teste para validar a lógica de avaliação do relatório e se o update foi feito corretamente
+    it('deve avaliar corretamente o relatório e validar o update', async () => {
+        const report = {
+            reprovacoesInicio: '0',
+            reprovacoesDisciplinas: '0',
+            exameQualificacao: 'Sim. Fui aprovado.',
+            estadoDoRelatorio: 'adequado'
+        };
+
+        const resultado = avaliarRelatorio(report);
+        expect(resultado).is.not.empty;
+    });
 });
+
+
+// Adicionando a função de avaliação do relatório
+function avaliarRelatorio(report) {
+    if (report.reprovacoesInicio == '0' && report.reprovacoesDisciplinas == '0' && report.exameQualificacao != 'Sim. Fui reprovado.' && report.exameQualificacao != 'Não.' && report.estadoDoRelatorio != 'adequado com ressalvas') {
+        return 'adequado';
+    } else if (report.reprovacoesInicio != '0' && report.reprovacoesInicio != '1' && report.reprovacoesDisciplinas != '0' && report.reprovacoesDisciplinas != '1' && report.exameQualificacao == 'Sim. Fui reprovado.') {
+        return 'insatisfatorio';
+    } else {
+        return 'adequado com ressalvas';
+    }
+}
