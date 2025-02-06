@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação de Desempenho na Pós-Graduação</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Avaliação de Desempenho na Pós-Graduação</h1>
+        <form id="userForm">
+            <label for="userType">Selecione seu perfil:</label>
+            <select id="userType" name="userType" required>
+                <option value="aluno">Aluno</option>
+                <option value="docente">Docente</option>
+                <option value="ccp">Comissão Coordenadora do Programa (CCP)</option>
+            </select>
+            <label for="userName">Nome:</label>
+            <input type="text" id="userName" name="userName" required>
+            <label for="userPassword">Senha:</label>
+            <input type="password" id="userPassword" name="userPassword" required>
+            <button type="submit">Confirmar</button>
+        </form>
+        <p id="errorMessage" class="error-message"></p>
+        <p><a href="cadastro/cadastro.html" class="register-link">Cadastrar novo aluno</a></p>
+    </div>
+    <div id="loadingScreen" class="loading-screen hidden">
+        <div class="spinner"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

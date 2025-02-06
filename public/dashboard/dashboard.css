@@ -1,0 +1,279 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('../www/wallpaper.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+}
+
+header button {
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+.logout-button {
+    background-color: #FF0000;
+}
+
+.logout-button:hover {
+    background-color: #cc0000;
+}
+
+main {
+    display: flex;
+    gap: 20px;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card, .notification-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.report-card {
+    background-color: #fff;
+    padding: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    min-height: 400px; 
+    height: auto; 
+    overflow: auto;
+}
+
+.card h2, .notification-card h3, .report-card h3 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #333;
+}
+
+.card p, .notification-card p, .report-card p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.notification-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.notification-card li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh; 
+    overflow-y: auto;
+}
+
+.modal h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.modal label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.modal input[type="text"],
+.modal input[type="radio"],
+.modal textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modal input[type="radio"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+.modal textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.modal button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.modal button:hover {
+    background-color: #0056b3; 
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 10px;
+}
+
+#reportDetails p {
+    margin-bottom: 20px; 
+}
+
+.modal input[type="text"],
+.modal input[type="radio"],
+.modal textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px; 
+}
+
+.modal input[type="radio"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+.modal textarea {
+    resize: vertical;
+    height: 100px;
+    font-size: 16px;
+}
+
+.modal label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+    font-weight: bold; 
+}
+
+.modal button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.modal button:hover {
+    background-color: #0056b3;
+}
+
+.modal input[type="radio"] + label {
+    margin-right: 20px;
+}
+
+.required::after {
+    content: ' *';
+    color: red;
+}
+
+.evaluations-summary {
+    margin-top: 20px;
+}
+
+.evaluations-summary h4 {
+    margin-bottom: 10px;
+    font-size: 22px;
+    color: #333;
+}
+
+.evaluation-item {
+    margin-bottom: 20px;
+}
+
+.evaluation-item p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.evaluation-divider {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #ccc;
+}
