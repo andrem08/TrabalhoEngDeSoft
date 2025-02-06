@@ -4,7 +4,7 @@
   "main": "test.js",
   "type": "module",
   "scripts": {
-    "test": "mocha public/dashboard/test_dashboard.js public/cadastro/test_cadastro.js public/relatorio/test_relatorio.js"
+    "test": "mocha public/dashboard/test_dashboard.js public/segundoRelatorio/test_segundoRelatorio.js public/cadastro/test_cadastro.js public/relatorio/test_relatorio.js public/test_script.js"
   },
   "dependencies": {
     "body-parser": "^1.20.3",
