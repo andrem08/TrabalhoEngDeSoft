@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         if(report.reprovacoesInicio == '0' && report.reprovacoesDisciplinas == '0' && report.exameQualificacao != 'Sim. Fui reprovado.' && report.exameQualificacao != 'Não.' && report.estadoDoRelatorio != 'adequado com ressalvas'){
             document.getElementById('adequado').checked = true;
-        } else if(report.reprovacoesInicio != '0' && report.reprovacoesInicio != '1' && report.reprovacoesDisciplinas != '0' && report.reprovacoesDisciplinas != '1' && report.exameQualificacao == 'Sim. Fui reprovado.'){ 
+        } else if((report.reprovacoesInicio != '0' && report.reprovacoesInicio != '1' && report.reprovacoesDisciplinas != '0') || (report.reprovacoesDisciplinas != '1') || report.exameQualificacao == 'Sim. Fui reprovado.'){ 
             document.getElementById('insatisfatorio').checked = true;
         } else {
             document.getElementById('adequadoComRessalvas').checked = true;
