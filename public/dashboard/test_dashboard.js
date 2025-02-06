@@ -302,4 +302,114 @@ describe('Funcionalidade do Dashboard', () => {
     
         expect(reportsContainer).is.not.empty;
     });
+
+    
+});
+
+describe('Lógica de Avaliação do Relatório', () => {
+    function avaliarRelatorio(report) {
+        if (report.reprovacoesInicio == '0' && report.reprovacoesDisciplinas == '0' && report.exameQualificacao != 'Sim. Fui reprovado.' && report.exameQualificacao != 'Não.' && report.estadoDoRelatorio != 'adequado com ressalvas') {
+            return 'adequado';
+        } else if (report.reprovacoesInicio != '0' && report.reprovacoesInicio != '1' && report.reprovacoesDisciplinas != '0' && report.reprovacoesDisciplinas != '1' && report.exameQualificacao == 'Sim. Fui reprovado.') {
+            return 'insatisfatorio';
+        } else {
+            return 'adequado com ressalvas';
+        }
+    }
+
+    it('deve retornar "adequado" quando todas as condições forem atendidas', () => {
+        const report = {
+            reprovacoesInicio: '0',
+            reprovacoesDisciplinas: '0',
+            exameQualificacao: 'Sim. Fui aprovado.',
+            estadoDoRelatorio: 'adequado'
+        };
+
+        const resultado = avaliarRelatorio(report);
+        expect(resultado).to.equal('adequado');
+    });
+
+    it('deve retornar "insatisfatorio" quando todas as condições forem atendidas', () => {
+        const report = {
+            reprovacoesInicio: '2',
+            reprovacoesDisciplinas: '2',
+            exameQualificacao: 'Sim. Fui reprovado.',
+            estadoDoRelatorio: 'insatisfatorio'
+        };
+
+        const resultado = avaliarRelatorio(report);
+        expect(resultado).to.equal('insatisfatorio');
+    });
+
+    it('deve retornar "adequado com ressalvas" quando nenhuma das condições anteriores forem atendidas', () => {
+        const report = {
+            reprovacoesInicio: '1',
+            reprovacoesDisciplinas: '1',
+            exameQualificacao: 'Não.',
+            estadoDoRelatorio: 'adequado com ressalvas'
+        };
+
+        const resultado = avaliarRelatorio(report);
+        expect(resultado).to.equal('adequado com ressalvas');
+    });
+
+    it('deve retornar "adequado com ressalvas" quando reprovacoesInicio não for "0" ou "1"', () => {
+        const report = {
+            reprovacoesInicio: '2',
+            reprovacoesDisciplinas: '0',
+            exameQualificacao: 'Sim. Fui aprovado.',
+            estadoDoRelatorio: 'adequado'
+        };
+
+        const resultado = avaliarRelatorio(report);
+        expect(resultado).to.equal('adequado com ressalvas');
+    });
+
+    it('deve retornar "adequado com ressalvas" quando reprovacoesDisciplinas não for "0" ou "1"', () => {
+        const report = {
+            reprovacoesInicio: '0',
+            reprovacoesDisciplinas: '2',
+            exameQualificacao: 'Sim. Fui aprovado.',
+            estadoDoRelatorio: 'adequado'
+        };
+
+        const resultado = avaliarRelatorio(report);
+        expect(resultado).to.equal('adequado com ressalvas');
+    });
+
+    it('deve retornar "adequado com ressalvas" quando exameQualificacao for "Não."', () => {
+        const report = {
+            reprovacoesInicio: '0',
+            reprovacoesDisciplinas: '0',
+            exameQualificacao: 'Não.',
+            estadoDoRelatorio: 'adequado'
+        };
+
+        const resultado = avaliarRelatorio(report);
+        expect(resultado).to.equal('adequado com ressalvas');
+    });
+
+    it('deve retornar "adequado com ressalvas" quando exameQualificacao for "Sim. Fui reprovado."', () => {
+        const report = {
+            reprovacoesInicio: '0',
+            reprovacoesDisciplinas: '0',
+            exameQualificacao: 'Sim. Fui reprovado.',
+            estadoDoRelatorio: 'adequado'
+        };
+
+        const resultado = avaliarRelatorio(report);
+        expect(resultado).to.equal('adequado com ressalvas');
+    });
+
+    it('deve retornar "adequado com ressalvas" quando estadoDoRelatorio for "adequado com ressalvas"', () => {
+        const report = {
+            reprovacoesInicio: '0',
+            reprovacoesDisciplinas: '0',
+            exameQualificacao: 'Sim. Fui aprovado.',
+            estadoDoRelatorio: 'adequado com ressalvas'
+        };
+
+        const resultado = avaliarRelatorio(report);
+        expect(resultado).to.equal('adequado com ressalvas');
+    });
 });
