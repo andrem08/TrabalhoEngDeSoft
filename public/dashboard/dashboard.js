@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     evaluations.forEach(evaluation => {
                         evaluationsSummary += `
                             <div class="evaluation-item">
-                                <p><strong>Orientador:</strong> ${evaluation.nomeParecerista}</p>
+                                <p><strong>${evaluation.papel === 'Membro da CCP' ? 'Membro da CCP' : 'Orientador'}:</strong> ${evaluation.nomeParecerista}</p>
                                 <p><strong>Parecer:</strong> ${evaluation.parecer}</p>
                                 <p><strong>Desempenho:</strong> ${evaluation.desempenho}</p>
                             </div>
@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         if(report.reprovacoesInicio == '0' && report.reprovacoesDisciplinas == '0' && report.exameQualificacao != 'Sim. Fui reprovado.' && report.exameQualificacao != 'Não.' && report.estadoDoRelatorio != 'adequado com ressalvas'){
             document.getElementById('adequado').checked = true;
-        } else if((report.reprovacoesInicio != '0' && report.reprovacoesInicio != '1' && report.reprovacoesDisciplinas != '0') || (report.reprovacoesDisciplinas != '1') || report.exameQualificacao == 'Sim. Fui reprovado.'){ 
+        } else if((report.reprovacoesInicio != '0' && report.reprovacoesInicio != '1') || (report.reprovacoesDisciplinas != '0' && report.reprovacoesDisciplinas != '1') || report.exameQualificacao == 'Sim. Fui reprovado.'){ 
             document.getElementById('insatisfatorio').checked = true;
         } else {
             document.getElementById('adequadoComRessalvas').checked = true;
